@@ -11,7 +11,7 @@ enum DisplayType {
 }
 
 class ImageCollapse extends StatefulWidget {
-  final List<String> imageUrls;
+  List<String> imageUrls;
   final String? titleGallery;
   final TextStyle? remainNumberStyle;
   final int crossAxisCount;
@@ -24,7 +24,7 @@ class ImageCollapse extends StatefulWidget {
   final Size imageSize;
   final EdgeInsetsGeometry? padding;
 
-  const ImageCollapse({
+  ImageCollapse({
     Key? key,
     required this.imageUrls,
     this.titleGallery,

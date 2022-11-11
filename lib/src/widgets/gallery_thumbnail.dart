@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:image_collapse/src/model/gallery.dart';
+import 'dart:io';
 
 import 'gallery_view_wrapper.dart';
 
@@ -18,17 +19,20 @@ class GalleryThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
-      child: Hero(
-        tag: galleryItem.id,
-        child: CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: galleryItem.url,
-          placeholder: (_, __) => const CupertinoActivityIndicator(),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        ),
-      ),
-    );
+        onTap: onTap,
+        child: Hero(
+          tag: galleryItem.id,
+          child: Image.file(
+            File(galleryItem.url),
+            fit: BoxFit.cover,
+          ),
+          // CachedNetworkImage(
+            //       fit: BoxFit.cover,
+            //       imageUrl: galleryItem.url,
+            //       placeholder: (_, __) => const CupertinoActivityIndicator(),
+            //       errorWidget: (context, url, error) => const Icon(Icons.error),
+            //     ),
+        ));
   }
 }
 

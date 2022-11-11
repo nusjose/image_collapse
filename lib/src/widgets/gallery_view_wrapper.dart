@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
+import 'dart:io';
 import 'gallery_app_bar.dart';
 import '../model/gallery.dart';
 
@@ -70,11 +69,16 @@ class _GalleryViewWrapperState extends State<GalleryViewWrapper> {
       maxScale: maxScale,
       initialScale: PhotoViewComputedScale.contained,
       heroAttributes: PhotoViewHeroAttributes(tag: galleryAtr.id),
-      child: CachedNetworkImage(
-        imageUrl: galleryAtr.url,
-        placeholder: (_, __) => const CupertinoActivityIndicator(),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
+      child:
+      Image.file(
+        File(galleryAtr.url),
+        fit: BoxFit.cover,
       ),
+      // CachedNetworkImage(
+      //   imageUrl: galleryAtr.url,
+      //   placeholder: (_, __) => const CupertinoActivityIndicator(),
+      //   errorWidget: (context, url, error) => const Icon(Icons.error),
+      // ),
     );
   }
 }
